@@ -3,16 +3,21 @@ import { timeout } from '../helpers';
 import EventHandler from '../EventHandler';
 
 class MenuController {
-    constructor(eventHandler) {
-        console.log('MenuController constructor');
+    constructor(view) {
+        this.view = view;
         this.eventHandler = new EventHandler;
         this.model = new MenuModel;
+
+        this.eventHandler.on('start', (() => this.model.selected = true).bind(this))
     }
 
     async start() {
         console.log('MenuController start()');
-        await timeout(10000);
-        return this.model.getGame(0);
+        this.view.field.draw(this.model.getIcon(), { x: 4, y: 8 }, { x: 6, y: 11 });
+        while(!this.model.selected){
+            await timeout(500);
+        }
+        return this.model.getGame();
     }
 }
 

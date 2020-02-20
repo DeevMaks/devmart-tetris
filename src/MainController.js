@@ -1,8 +1,9 @@
 import Menu from './menu/MenuController';
+import View from './view/View';
 
 class MainController {
     constructor() {
-        console.log('MainController constructor()');
+        this.view = new View;
         this.start();
     }
 
@@ -16,13 +17,13 @@ class MainController {
 
     async startGame(gameController) {
         console.log('MainController startGame');
-        const game = new gameController();
+        const game = new gameController(this.view);
         await game.start();
     }
 
     async startMenu() {
         console.log('MainController startMenu')
-        const menu = new Menu;
+        const menu = new Menu(this.view);
         return await menu.start();
     }
 }

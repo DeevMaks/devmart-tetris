@@ -3,8 +3,8 @@ import { timeout } from '../../helpers';
 import EventHandler from '../../EventHandler';
 
 class TetrisController {
-    constructor(eventHandler) {
-        console.log('TetrisController constructor');
+    constructor(view) {
+        this.view = view;
         this.eventHandler = new EventHandler;
         this.model = new TetrisModel;
     }
