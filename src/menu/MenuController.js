@@ -17,6 +17,7 @@ class MenuController {
         while(!this.model.selected){
             await timeout(500);
         }
+        this.view.field.clear();
         return this.model.getGame();
     }
 }

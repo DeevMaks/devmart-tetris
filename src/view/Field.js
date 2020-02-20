@@ -29,6 +29,15 @@ class Field {
             }
         }
     }
+
+    clear(start = { x: 0, y: 0 }, end = { x: 10, y: 20 }){
+        for(let i = start.y; i < end.y; i++) {
+            for(let j = start.x; j < end.x; j++){
+                const $pixel = this.$field.querySelector(`[data-coord="${j};${i}"]`);
+                $pixel.classList.remove('active');
+            }
+        }
+    }
 }
 
 export default Field;
