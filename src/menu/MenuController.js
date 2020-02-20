@@ -1,9 +1,11 @@
 import MenuModel from './MenuModel';
 import { timeout } from '../helpers';
+import EventHandler from '../EventHandler';
 
 class MenuController {
-    constructor() {
+    constructor(eventHandler) {
         console.log('MenuController constructor');
+        this.eventHandler = new EventHandler;
         this.model = new MenuModel;
     }
 
