@@ -1,8 +1,10 @@
 import Menu from './menu/MenuController';
 import View from './view/View';
+import EventHandler from './EventHandler';
 
 class MainController {
     constructor() {
+        this.eventHandler = new EventHandler;
         this.view = new View;
         this.start();
     }
@@ -17,13 +19,13 @@ class MainController {
 
     async startGame(gameController) {
         console.log('MainController startGame');
-        const game = new gameController(this.view);
+        const game = new gameController(this.view, this.eventHandler);
         await game.start();
     }
 
     async startMenu() {
         console.log('MainController startMenu')
-        const menu = new Menu(this.view);
+        const menu = new Menu(this.view, this.eventHandler);
         return await menu.start();
     }
 }

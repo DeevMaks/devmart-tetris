@@ -1,11 +1,10 @@
 import MenuModel from './MenuModel';
 import { timeout } from '../helpers';
-import EventHandler from '../EventHandler';
 
 class MenuController {
-    constructor(view) {
+    constructor(view, eventHandler) {
         this.view = view;
-        this.eventHandler = new EventHandler;
+        this.eventHandler = eventHandler;
         this.model = new MenuModel;
 
         this.eventHandler.on('start', (() => this.model.selected = true).bind(this))
