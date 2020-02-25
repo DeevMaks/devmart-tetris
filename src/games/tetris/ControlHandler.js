@@ -30,7 +30,7 @@ class ControlHandler {
     }
 
     rotate() {
-        if(!this.collideHandler.isCanRotate) {
+        if(this.collideHandler.isCanRotate) {
             this.block.rotate();
         }
     }

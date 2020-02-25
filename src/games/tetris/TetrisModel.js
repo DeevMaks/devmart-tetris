@@ -1,7 +1,6 @@
 class TetrisModel {
     constructor() {
         this.score = 0;
-        this.speed = 200;
         this.isDrop = false;
         this.isPause = false;
         this.isExit = false;
@@ -26,6 +25,10 @@ class TetrisModel {
 
     addPixels(pixels){
         pixels.forEach(({x, y}) => this.field[y][x] = true);
+    }
+
+    isLineFull(line) {
+       return this.field[line].reduce((acc, pixel) => pixel && acc, true);
     }
 
     get isLoose() {

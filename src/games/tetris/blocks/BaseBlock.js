@@ -31,7 +31,7 @@ class BaseBlock {
     }
 
     getRotatePosition(){
-        this.getPosition();
+       return this.getPosition(this.currentPosition + 1);
     }
 }
 

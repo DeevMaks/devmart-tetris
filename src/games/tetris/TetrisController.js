@@ -64,7 +64,8 @@ class TetrisController {
     }
 
     getDelay() {
-        return this.model.isDrop ? 0 : this.model.speed;
+        if(this.model.isDrop) return 0;
+        return 1000 - (this.model.score / 100);
     }
 
     changeBlock() {
@@ -72,6 +73,33 @@ class TetrisController {
         this.nextBlock = blocksFabric.createBlock();
         this.collideHandler.block = this.currentBlock;
         this.controlHandler.block = this.currentBlock;
+    }
+
+    removeLines() {
+        let removedLines = 0
+        for(let i = 0; i < 20; i++) {
+            if(this.model.isLineFull(i)) {
+                removedLines++
+                this.model.field.splice(i, 1);
+                this.model.field.unshift(this.model.initRow());
+            }
+        }
+        this.setScore(removedLines);
+    }
+
+    setScore(lines) {
+        let score = 0;
+        if(lines === 1) {
+            score = 100;
+        } else if(lines === 2) {
+            score = 300;
+        } else if(lines === 3) {
+            score = 700;
+        } else if(lines === 4) {
+            score = 1500;
+        }
+
+        this.model.score += score;
     }
 
 }
