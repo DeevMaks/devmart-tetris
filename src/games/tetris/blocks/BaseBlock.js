@@ -2,10 +2,26 @@ class BaseBlock {
     constructor(coord, pos) {
         this.canonicalCoord = coord || { x: 4, y: -1 };
         this.currentPosition = pos || 0;
+
+        this.calcFunctions = [
+            coord => [
+                {x: coord.x, y: coord.y}
+            ],
+            coord => [
+                {x: coord.x, y: coord.y}
+            ],
+            coord => [
+                {x: coord.x, y: coord.y}
+            ],
+            coord => [
+                {x: coord.x, y: coord.y}
+            ],
+        ];
     }
 
     rotate(back = false) {
-        this.currentPosition < 4 ? this.currentPosition++ : 0;
+        this.currentPosition < 3 ? this.currentPosition++ : this.currentPosition = 0;
+        console.log(this.currentPosition);
     }
 
     move(x, y) {
@@ -25,13 +41,19 @@ class BaseBlock {
         this.canonicalCoord.y++;
     }
 
-    getPosition(){
-        if(this.canonicalCoord.y < 0) return [];
-        return [ this.canonicalCoord ];
+    getPosition(pos = false){
+        let coordinations = [];
+        if(pos) {
+            coordinations = this.calcFunctions[pos](this.canonicalCoord);
+        } else {
+            coordinations = this.calcFunctions[this.currentPosition](this.canonicalCoord);
+        }
+        return coordinations.filter(coord => coord.y >= 0);
     }
 
     getRotatePosition(){
-       return this.getPosition(this.currentPosition + 1);
+        const position = this.currentPosition < 3 ? this.currentPosition + 1 : 0;
+        return this.getPosition(position);
     }
 }
 

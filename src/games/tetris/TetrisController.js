@@ -19,6 +19,7 @@ class TetrisController {
         console.log('TetrisController start()');
         while(!this.model.isLoose) {
             await this.round();
+            this.removeLines();
             if(this.model.isExit) {
                 return;
             }
@@ -65,7 +66,7 @@ class TetrisController {
 
     getDelay() {
         if(this.model.isDrop) return 0;
-        return 1000 - (this.model.score / 100);
+        return 600 - (this.model.score / 100);
     }
 
     changeBlock() {
