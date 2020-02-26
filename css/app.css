@@ -1,0 +1,129 @@
+body {
+    background-color: #ccc;
+    color: #757575;
+    font-family: 'Consolas', Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+::-moz-focus-outer, ::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow-block {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 120px;
+    transform: rotate(45deg);
+}
+
+.menu-block {
+    position: relative;
+    top: -30px;
+    left: -5px;
+    transform: rotate(-20deg);
+}
+
+button {
+    background-color: gold;
+    border-radius: 50%;
+    border: none;
+    border-bottom: 2px solid orange;
+    border-right: 2px solid orange;
+    box-shadow: 0 0 3px black;
+    outline: 0 !important;
+}
+
+button:active {
+    border: none;
+}
+
+button:focus {
+    border: none;
+}
+
+.arrow-btn {
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+}
+
+.big-btn {
+    width: 80px;
+    height: 80px;
+}
+
+.menu-btn {
+    width: 20px;
+    height: 20px;
+    margin: 15px;
+}
+
+#controller {
+    background-color: #cc2e2e;
+    padding: 25px;
+    max-width: 800px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 3px 3px 0px #7d1f1f;
+    width: 100%;
+}
+
+#screen{
+    width: calc((15px * 15) + 4px);
+    height: calc((15px * 20) + 4px);
+    background-color: #9cb9a5;
+    border-bottom: 4px solid #c86666;
+    border-right: 4px solid #bf5656;
+    border-top: 4px solid #712020;
+    border-left: 4px solid #7d3232;
+    border-radius: 4px;
+    padding: 2px;
+    margin: 0 20px;
+}
+
+#field{
+    width: calc(15px * 10);
+    height: calc(15px * 20);
+    border: 2px solid #000;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pixel{
+    width: 11px;
+    height: 11px;
+    border: 1px solid #a4bdaa;
+    margin: 1px;
+    position: relative;
+}
+
+.pixel::after{
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 7px;
+    height: 7px;
+    content: '';
+    background: #a4bdaa;
+}
+
+.pixel.active{
+    border: 1px solid #4a554d;
+}
+
+.pixel.active::after{
+    background: #4a554d;
+}
